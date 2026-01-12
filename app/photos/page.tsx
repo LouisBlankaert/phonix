@@ -49,15 +49,6 @@ export default function Photos() {
     },
   ];
 
-  const atelierPhotos = [
-    { title: "Poste de réparation équipé" },
-    { title: "Outils professionnels" },
-    { title: "Zone de diagnostic" },
-    { title: "Stock de pièces détachées" },
-    { title: "Espace d'accueil clients" },
-    { title: "Équipement de précision" },
-  ];
-
   return (
     <div className="min-h-screen bg-neutral-50">
       <Navigation />
@@ -115,29 +106,6 @@ export default function Photos() {
             </div>
           </div>
         ))}
-
-        <div className="mb-16">
-          <div className="mb-8">
-            <h2 className="text-3xl font-light text-neutral-900 mb-2 tracking-tight">Notre atelier</h2>
-            <p className="text-lg text-neutral-600 font-light">Découvrez notre espace de travail professionnel</p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {atelierPhotos.map((photo, photoIndex) => (
-              <div 
-                key={photoIndex}
-                className="group relative bg-white border border-neutral-200 overflow-hidden hover:border-neutral-900 transition-colors"
-              >
-                <div className="aspect-4/3 bg-neutral-100 flex items-center justify-center relative overflow-hidden">
-                  <ImageIcon className="h-24 w-24 text-neutral-300 group-hover:scale-110 transition-transform" />
-                </div>
-                <div className="p-4">
-                  <h3 className="font-light text-neutral-900">{photo.title}</h3>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
 
         <div className="bg-neutral-900 p-16 text-center text-white">
           <h2 className="text-3xl font-light tracking-tight mb-4">Besoin d&apos;une réparation ?</h2>

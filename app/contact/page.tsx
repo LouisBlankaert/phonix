@@ -2,6 +2,7 @@
 
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { contactInfo, serviceHighlights, repairTypes } from "@/data/contact";
@@ -16,17 +17,44 @@ export default function Contact() {
     message: ""
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert("Merci pour votre message ! Nous vous contacterons bientôt.");
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      device: "",
-      issue: "",
-      message: ""
-    });
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    // Remplacez ces valeurs par vos clés EmailJS
+    const serviceID = "VOTRE_SERVICE_ID";
+    const templateID = "VOTRE_TEMPLATE_ID";
+    const publicKey = "VOTRE_PUBLIC_KEY";
+
+    emailjs.send(serviceID, templateID, {
+      from_name: formData.name,
+      from_email: formData.email,
+      phone: formData.phone,
+      device: formData.device,
+      issue: formData.issue,
+      message: formData.message,
+      to_email: "hello.phonix@outlook.com",
+    }, publicKey)
+      .then(() => {
+        setSubmitStatus("success");
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          device: "",
+          issue: "",
+          message: ""
+        });
+        setIsSubmitting(false);
+      })
+      .catch(() => {
+        setSubmitStatus("error");
+        setIsSubmitting(false);
+      });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -103,8 +131,8 @@ export default function Contact() {
                     <h3 className="font-normal text-neutral-900 mb-1">Horaires</h3>
                     <p className="text-neutral-600 font-light">
                       {contactInfo.hours.weekdays}<br />
-                      {contactInfo.hours.saturday}<br />
-                      {contactInfo.hours.sunday}
+                      {/* {contactInfo.hours.saturday}<br />
+                      {contactInfo.hours.sunday} */}
                     </p>
                   </div>
                 </div>
@@ -141,7 +169,7 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   className="w-full px-4 py-3 border border-neutral-300 focus:border-neutral-900 outline-none transition font-light"
-                  placeholder="Jean Dupont"
+                  placeholder=""
                 />
               </div>
 
@@ -157,7 +185,7 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   className="w-full px-4 py-3 border border-neutral-300 focus:border-neutral-900 outline-none transition font-light"
-                  placeholder="jean.dupont@email.com"
+                  placeholder=""
                 />
               </div>
 
@@ -173,7 +201,7 @@ export default function Contact() {
                   value={formData.phone}
                   onChange={handleChange}
                   className="w-full px-4 py-3 border border-neutral-300 focus:border-neutral-900 outline-none transition font-light"
-                  placeholder="+32 4 12 34 56 78"
+                  placeholder=""
                 />
               </div>
 
@@ -230,10 +258,23 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="w-full px-8 py-4 bg-neutral-900 text-white hover:bg-neutral-800 transition-colors font-light text-sm tracking-wide uppercase"
+                disabled={isSubmitting}
+                className="w-full px-8 py-4 bg-neutral-900 text-white hover:bg-neutral-800 transition-colors font-light text-sm tracking-wide uppercase disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Envoyer le message
+                {isSubmitting ? "Envoi en cours..." : "Envoyer le message"}
               </button>
+
+              {submitStatus === "success" && (
+                <div className="p-4 bg-green-50 border border-green-200 text-green-800 text-sm font-light">
+                  ✓ Merci pour votre message ! Nous vous contacterons bientôt.
+                </div>
+              )}
+
+              {submitStatus === "error" && (
+                <div className="p-4 bg-red-50 border border-red-200 text-red-800 text-sm font-light">
+                  ✗ Une erreur est survenue. Veuillez réessayer ou nous contacter par téléphone.
+                </div>
+              )}
             </form>
           </div>
         </div>

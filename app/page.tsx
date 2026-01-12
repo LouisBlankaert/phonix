@@ -1,16 +1,20 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Smartphone, Battery, ShieldCheck, Camera, MapPin, Truck } from "lucide-react";
 import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { iphonePricing, samsungPricing, serviceFeatures } from "@/data/pricing";
+import { iphonePricing, samsungPricing, xiaomiPricing, huaweiPricing, serviceFeatures } from "@/data/pricing";
 
 export default function Home() {
-  const [selectedBrand, setSelectedBrand] = useState<"iphone" | "samsung" | null>(null);
+  const [selectedBrand, setSelectedBrand] = useState<"iphone" | "samsung" | "xiaomi" | "huawei" | null>(null);
   
-  const pricingData = selectedBrand === "iphone" ? iphonePricing : selectedBrand === "samsung" ? samsungPricing : [];
+  const pricingData = selectedBrand === "iphone" ? iphonePricing : 
+                      selectedBrand === "samsung" ? samsungPricing : 
+                      selectedBrand === "xiaomi" ? xiaomiPricing :
+                      selectedBrand === "huawei" ? huaweiPricing : [];
 
   return (
     <div className="min-h-screen bg-neutral-50">
@@ -22,26 +26,65 @@ export default function Home() {
             Réparation de Téléphones Professionnelle
           </h1>
           <p className="text-lg font-light text-neutral-600 max-w-3xl mx-auto mb-8">
-            Écrans compatibles OLED, batteries, caméras et vitres arrière
+            Écrans OLED, batteries, caméras et vitres arrière
           </p>
 
           {!selectedBrand && (
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-center items-center mb-12">
               <button
                 onClick={() => setSelectedBrand("iphone")}
-                className="group relative bg-white border-2 border-neutral-200 hover:border-neutral-900 transition-all p-12 w-full sm:w-80 cursor-pointer"
+                className="group relative bg-white border-2 border-neutral-200 hover:border-neutral-900 transition-all p-12 w-full cursor-pointer"
               >
-                <Smartphone className="h-16 w-16 text-neutral-900 mx-auto mb-4" />
+                <div className="h-16 w-16 mx-auto mb-4 relative">
+                  <Image
+                    src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
+                    alt="Apple Logo"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
                 <h3 className="text-2xl font-light text-neutral-900 mb-2">iPhone</h3>
-                <p className="text-sm text-neutral-600 font-light">Voir les tarifs iPhone</p>
+                <p className="text-sm text-neutral-600 font-light">Voir les tarifs</p>
               </button>
               <button
                 onClick={() => setSelectedBrand("samsung")}
-                className="group relative bg-white border-2 border-neutral-200 hover:border-neutral-900 transition-all p-12 w-full sm:w-80 cursor-pointer"
+                className="group relative bg-white border-2 border-neutral-200 hover:border-neutral-900 transition-all p-12 w-full cursor-pointer"
               >
-                <Smartphone className="h-16 w-16 text-neutral-900 mx-auto mb-4" />
+                <div className="h-20 w-32 mx-auto mb-4 relative">
+                  <Image
+                    src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Samsung_wordmark.svg"
+                    alt="Samsung Logo"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
                 <h3 className="text-2xl font-light text-neutral-900 mb-2">Samsung</h3>
-                <p className="text-sm text-neutral-600 font-light">Voir les tarifs Samsung</p>
+                <p className="text-sm text-neutral-600 font-light">Voir les tarifs</p>
+              </button>
+              <button
+                onClick={() => setSelectedBrand("xiaomi")}
+                className="group relative bg-white border-2 border-neutral-200 hover:border-neutral-900 transition-all p-12 w-full cursor-pointer"
+              >
+                <div className="h-16 w-16 mx-auto mb-4 relative">
+                  <Image
+                    src="https://upload.wikimedia.org/wikipedia/commons/2/29/Xiaomi_logo.svg"
+                    alt="Xiaomi Logo"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+                <h3 className="text-2xl font-light text-neutral-900 mb-2">Xiaomi</h3>
+                <p className="text-sm text-neutral-600 font-light">Voir les tarifs</p>
+              </button>
+              <button
+                onClick={() => setSelectedBrand("huawei")}
+                className="group relative bg-white border-2 border-neutral-200 hover:border-neutral-900 transition-all p-12 w-full cursor-pointer"
+              >
+                <div className="h-16 w-16 mx-auto mb-4 flex items-center justify-center">
+                  <div className="text-4xl font-bold text-red-600">HUAWEI</div>
+                </div>
+                <h3 className="text-2xl font-light text-neutral-900 mb-2">Huawei</h3>
+                <p className="text-sm text-neutral-600 font-light">Voir les tarifs</p>
               </button>
             </div>
           )}
@@ -50,7 +93,7 @@ export default function Home() {
             <div className="mb-8">
               <button
                 onClick={() => setSelectedBrand(null)}
-                className="inline-block px-6 py-2 text-sm font-light text-neutral-600 hover:text-neutral-900 transition-colors uppercase tracking-wide cursor-pointer"
+                className="inline-block px-8 py-3 text-sm font-normal bg-neutral-900 text-white hover:bg-neutral-700 transition-colors uppercase tracking-wide cursor-pointer"
               >
                 ← Retour à la sélection
               </button>
@@ -88,7 +131,9 @@ export default function Home() {
           <>
             <div className="text-center mb-8">
               <h2 className="text-3xl font-light text-neutral-900 mb-2 tracking-tight">
-                Tarifs {selectedBrand === "iphone" ? "iPhone" : "Samsung"}
+                Tarifs {selectedBrand === "iphone" ? "iPhone" : 
+                        selectedBrand === "samsung" ? "Samsung" : 
+                        selectedBrand === "xiaomi" ? "Xiaomi" : "Huawei"}
               </h2>
             </div>
 
@@ -140,15 +185,6 @@ export default function Home() {
               </tbody>
             </table>
           </div>
-            </div>
-
-            <div className="bg-neutral-100 border-l-2 border-neutral-900 p-8 mb-16">
-          <h2 className="text-xl font-light text-neutral-900 mb-3 tracking-tight">Pièces de qualité premium</h2>
-          <p className="text-neutral-700 leading-relaxed font-light">
-            Tous nos écrans sont des <strong className="font-normal">écrans compatibles OLED de haute qualité</strong>, offrant une excellente qualité d&apos;image 
-            et une durabilité optimale. Nous utilisons uniquement des pièces testées et certifiées pour garantir 
-            la meilleure expérience possible à nos clients.
-          </p>
             </div>
           </>
         )}

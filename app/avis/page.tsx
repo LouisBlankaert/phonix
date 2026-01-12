@@ -116,8 +116,11 @@ export default function Avis() {
           <h1 className="text-5xl font-light tracking-tight text-neutral-900 mb-6">
             Avis Clients
           </h1>
-          <p className="text-lg font-light text-neutral-600 max-w-2xl mx-auto mb-8">
+          <p className="text-lg font-light text-neutral-600 max-w-2xl mx-auto mb-4">
             Découvrez ce que nos clients pensent de nos services
+          </p>
+          <p className="text-sm font-light text-neutral-500 mb-8">
+            Ces avis proviennent de nos clients satisfaits
           </p>
           
           <div className="inline-flex items-center gap-4 bg-white border border-neutral-200 px-8 py-6">
@@ -170,14 +173,24 @@ export default function Avis() {
         <div className="mt-16 bg-neutral-900 p-16 text-center text-white">
           <h2 className="text-3xl font-light tracking-tight mb-4">Vous aussi, partagez votre expérience !</h2>
           <p className="text-lg font-light text-neutral-300 mb-8">
-            Votre avis nous aide à améliorer nos services
+            Laissez-nous un avis sur Google et aidez d&apos;autres clients à nous découvrir
           </p>
-          <Link 
-            href="/contact"
-            className="inline-block px-10 py-4 bg-white text-neutral-900 hover:bg-neutral-100 transition-colors font-light text-sm tracking-wide uppercase"
-          >
-            Nous contacter
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a 
+              href="https://g.page/r/VOTRE_ID_GOOGLE/review"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-10 py-4 bg-white text-neutral-900 hover:bg-neutral-100 transition-colors font-light text-sm tracking-wide uppercase"
+            >
+              ⭐ Laisser un avis
+            </a>
+            <Link 
+              href="/contact"
+              className="inline-block px-10 py-4 border border-white text-white hover:bg-white hover:text-neutral-900 transition-colors font-light text-sm tracking-wide uppercase"
+            >
+              Nous contacter
+            </Link>
+          </div>
         </div>
       </main>
 
