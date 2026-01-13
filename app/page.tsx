@@ -33,7 +33,7 @@ export default function Home() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-center items-center mb-12">
               <button
                 onClick={() => setSelectedBrand("iphone")}
-                className="group relative bg-white border-2 border-neutral-200 hover:border-neutral-900 transition-all p-8 md:p-12 w-full cursor-pointer"
+                className="group relative bg-white border-2 border-neutral-200 hover:border-neutral-900 transition-all duration-300 p-8 md:p-12 w-full cursor-pointer hover:shadow-lg hover:-translate-y-1 transform"
               >
                 <div className="h-12 w-12 md:h-16 md:w-16 mx-auto mb-3 md:mb-4 relative">
                   <Image
@@ -48,7 +48,7 @@ export default function Home() {
               </button>
               <button
                 onClick={() => setSelectedBrand("samsung")}
-                className="group relative bg-white border-2 border-neutral-200 hover:border-neutral-900 transition-all p-8 md:p-12 w-full cursor-pointer"
+                className="group relative bg-white border-2 border-neutral-200 hover:border-neutral-900 transition-all duration-300 p-8 md:p-12 w-full cursor-pointer hover:shadow-lg hover:-translate-y-1 transform"
               >
                 <div className="h-16 w-24 md:h-20 md:w-32 mx-auto mb-3 md:mb-4 relative">
                   <Image
@@ -63,7 +63,7 @@ export default function Home() {
               </button>
               <button
                 onClick={() => setSelectedBrand("xiaomi")}
-                className="group relative bg-white border-2 border-neutral-200 hover:border-neutral-900 transition-all p-8 md:p-12 w-full cursor-pointer"
+                className="group relative bg-white border-2 border-neutral-200 hover:border-neutral-900 transition-all duration-300 p-8 md:p-12 w-full cursor-pointer hover:shadow-lg hover:-translate-y-1 transform"
               >
                 <div className="h-12 w-12 md:h-16 md:w-16 mx-auto mb-3 md:mb-4 relative">
                   <Image
@@ -78,7 +78,7 @@ export default function Home() {
               </button>
               <button
                 onClick={() => setSelectedBrand("huawei")}
-                className="group relative bg-white border-2 border-neutral-200 hover:border-neutral-900 transition-all p-8 md:p-12 w-full cursor-pointer"
+                className="group relative bg-white border-2 border-neutral-200 hover:border-neutral-900 transition-all duration-300 p-8 md:p-12 w-full cursor-pointer hover:shadow-lg hover:-translate-y-1 transform"
               >
                 <div className="h-12 w-12 md:h-16 md:w-16 mx-auto mb-3 md:mb-4 flex items-center justify-center">
                   <div className="text-2xl md:text-4xl font-bold text-red-600">HUAWEI</div>
@@ -101,7 +101,7 @@ export default function Home() {
           )}
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto mb-16">
-            <div className="bg-white border border-neutral-200 p-6 md:p-8 hover:border-neutral-900 transition-colors">
+            <div className="bg-white border border-neutral-200 p-6 md:p-8 hover:border-neutral-900 transition-all duration-300 hover:shadow-md">
               <MapPin className="h-8 w-8 text-neutral-900 mx-auto mb-4" />
               <div className="font-light text-neutral-900 mb-2 text-lg">{serviceFeatures[0].title}</div>
               <div className="text-sm text-neutral-600 space-y-1">
@@ -110,14 +110,14 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            <div className="bg-white border border-neutral-200 p-6 md:p-8 hover:border-neutral-900 transition-colors">
+            <div className="bg-white border border-neutral-200 p-6 md:p-8 hover:border-neutral-900 transition-all duration-300 hover:shadow-md">
               <Truck className="h-8 w-8 text-neutral-900 mx-auto mb-4" />
               <div className="font-light text-neutral-900 mb-2 text-lg">{serviceFeatures[1].title}</div>
               <div className="text-sm text-neutral-600">
                 {serviceFeatures[1].description}
               </div>
             </div>
-            <div className="bg-white border border-neutral-200 p-6 md:p-8 hover:border-neutral-900 transition-colors">
+            <div className="bg-white border border-neutral-200 p-6 md:p-8 hover:border-neutral-900 transition-all duration-300 hover:shadow-md">
               <ShieldCheck className="h-8 w-8 text-neutral-900 mx-auto mb-4" />
               <div className="font-light text-neutral-900 mb-2 text-lg">{serviceFeatures[2].title}</div>
               <div className="text-sm text-neutral-600">
@@ -175,7 +175,7 @@ export default function Home() {
                 {pricingData.map((item, index) => (
                   <tr 
                     key={index}
-                    className="hover:bg-neutral-50 transition-colors"
+                    className="hover:bg-neutral-50 transition-all duration-200"
                   >
                     <td className="px-3 md:px-6 py-3 md:py-4 font-light text-neutral-900 text-sm md:text-base">{item.model}</td>
                     <td className="px-3 md:px-6 py-3 md:py-4 text-center text-neutral-900 font-normal text-sm md:text-base">{item.screen}</td>
@@ -198,7 +198,7 @@ export default function Home() {
           </p>
           <Link 
             href="/contact"
-            className="inline-block px-8 md:px-10 py-3 md:py-4 bg-white text-neutral-900 hover:bg-neutral-100 transition-colors font-light text-xs md:text-sm tracking-wide uppercase"
+            className="inline-block px-8 md:px-10 py-3 md:py-4 bg-white text-neutral-900 hover:bg-neutral-100 transition-all duration-300 font-light text-xs md:text-sm tracking-wide uppercase hover:shadow-lg hover:scale-105 transform"
           >
             Nous contacter
           </Link>

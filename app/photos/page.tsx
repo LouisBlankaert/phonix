@@ -115,7 +115,7 @@ export default function Photos() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
               href="/contact"
-              className="inline-block px-10 py-4 bg-white text-neutral-900 hover:bg-neutral-100 transition-colors font-light text-sm tracking-wide uppercase"
+              className="inline-block px-10 py-4 bg-white text-neutral-900 hover:bg-neutral-100 transition-all duration-300 hover:shadow-lg hover:scale-105 transform font-light text-sm tracking-wide uppercase"
             >
               Nous contacter
             </Link>

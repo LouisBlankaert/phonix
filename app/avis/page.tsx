@@ -138,7 +138,7 @@ export default function Avis() {
           {reviews.map((review, index) => (
             <div 
               key={index}
-              className="bg-white border border-neutral-200 p-6 hover:border-neutral-900 transition-colors"
+              className="bg-white border border-neutral-200 p-6 hover:border-neutral-900 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 transform"
             >
               <div className="flex items-start gap-4 mb-4">
                 <div className="w-12 h-12 rounded-full bg-neutral-900 flex items-center justify-center text-white font-light shrink-0">

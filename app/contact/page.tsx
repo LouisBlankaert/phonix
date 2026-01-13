@@ -3,6 +3,8 @@
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { contactInfo, serviceHighlights, repairTypes } from "@/data/contact";
@@ -18,17 +20,15 @@ export default function Contact() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus("idle");
 
-    // Remplacez ces valeurs par vos clés EmailJS
-    const serviceID = "VOTRE_SERVICE_ID";
-    const templateID = "VOTRE_TEMPLATE_ID";
-    const publicKey = "VOTRE_PUBLIC_KEY";
+    // Récupération des clés depuis les variables d'environnement
+    const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
+    const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!;
 
     emailjs.send(serviceID, templateID, {
       from_name: formData.name,
@@ -40,7 +40,14 @@ export default function Contact() {
       to_email: "hello.phonix@outlook.com",
     }, publicKey)
       .then(() => {
-        setSubmitStatus("success");
+        toast.success("✓ Merci pour votre message ! Nous vous contacterons bientôt.", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
         setFormData({
           name: "",
           email: "",
@@ -52,7 +59,14 @@ export default function Contact() {
         setIsSubmitting(false);
       })
       .catch(() => {
-        setSubmitStatus("error");
+        toast.error("✗ Une erreur est survenue. Veuillez réessayer ou nous contacter par téléphone.", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
         setIsSubmitting(false);
       });
   };
@@ -66,6 +80,7 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-neutral-50">
+      <ToastContainer />
       <Navigation />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -259,22 +274,10 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full px-8 py-4 bg-neutral-900 text-white hover:bg-neutral-800 transition-colors font-light text-sm tracking-wide uppercase disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-8 py-4 bg-neutral-900 text-white hover:bg-neutral-800 transition-all duration-300 hover:shadow-lg transform hover:scale-[1.02] font-light text-sm tracking-wide uppercase disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? "Envoi en cours..." : "Envoyer le message"}
               </button>
-
-              {submitStatus === "success" && (
-                <div className="p-4 bg-green-50 border border-green-200 text-green-800 text-sm font-light">
-                  ✓ Merci pour votre message ! Nous vous contacterons bientôt.
-                </div>
-              )}
-
-              {submitStatus === "error" && (
-                <div className="p-4 bg-red-50 border border-red-200 text-red-800 text-sm font-light">
-                  ✗ Une erreur est survenue. Veuillez réessayer ou nous contacter par téléphone.
-                </div>
-              )}
             </form>
           </div>
         </div>
