@@ -8,11 +8,6 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { iphonePricing, samsungPricing, xiaomiPricing, huaweiPricing, serviceFeatures } from "@/data/pricing";
 
-export const metadata = {
-  title: "Tarifs Réparation iPhone, Samsung, Xiaomi, Huawei | Phonix Bruxelles",
-  description: "Découvrez nos tarifs compétitifs pour la réparation de téléphones à Bruxelles et Geraardsbergen. Écran OLED, batterie, caméra, vitre arrière. Plus de 90 modèles. Garantie 12 mois.",
-};
-
 export default function Home() {
   const [selectedBrand, setSelectedBrand] = useState<"iphone" | "samsung" | "xiaomi" | "huawei" | null>(null);
   
