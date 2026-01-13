@@ -8,6 +8,11 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { iphonePricing, samsungPricing, xiaomiPricing, huaweiPricing, serviceFeatures } from "@/data/pricing";
 
+export const metadata = {
+  title: "Tarifs Réparation iPhone, Samsung, Xiaomi, Huawei | Phonix Bruxelles",
+  description: "Découvrez nos tarifs compétitifs pour la réparation de téléphones à Bruxelles et Geraardsbergen. Écran OLED, batterie, caméra, vitre arrière. Plus de 90 modèles. Garantie 12 mois.",
+};
+
 export default function Home() {
   const [selectedBrand, setSelectedBrand] = useState<"iphone" | "samsung" | "xiaomi" | "huawei" | null>(null);
   
@@ -23,10 +28,10 @@ export default function Home() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-16">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-light tracking-tight text-neutral-900 mb-6">
-            Réparation de Téléphones Professionnelle
+            Réparation de Téléphones Professionnelle à Bruxelles et Geraardsbergen
           </h1>
           <p className="text-base md:text-lg font-light text-neutral-600 max-w-3xl mx-auto mb-8">
-            Écrans OLED, batteries, caméras et vitres arrière
+            Réparation rapide d&apos;écrans OLED, batteries, caméras et vitres arrière pour iPhone, Samsung, Xiaomi et Huawei. Garantie 12 mois.
           </p>
 
           {!selectedBrand && (

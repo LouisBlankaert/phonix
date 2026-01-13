@@ -171,19 +171,17 @@ export default function Avis() {
         </div>
 
         <div className="mt-16 bg-neutral-900 p-16 text-center text-white">
-          <h2 className="text-3xl font-light tracking-tight mb-4">Vous aussi, partagez votre expérience !</h2>
+          <h2 className="text-3xl font-light tracking-tight mb-4">Section avis Google</h2>
           <p className="text-lg font-light text-neutral-300 mb-8">
-            Laissez-nous un avis sur Google et aidez d&apos;autres clients à nous découvrir
+            Cette section sera bientôt disponible. En attendant, n&apos;hésitez pas à nous contacter directement !
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="https://g.page/r/VOTRE_ID_GOOGLE/review"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-10 py-4 bg-white text-neutral-900 hover:bg-neutral-100 transition-colors font-light text-sm tracking-wide uppercase"
+            <Link 
+              href="/"
+              className="inline-block px-10 py-4 bg-white text-neutral-900 hover:bg-neutral-100 transition-all duration-300 hover:shadow-lg hover:scale-105 transform font-light text-sm tracking-wide uppercase"
             >
-              ⭐ Laisser un avis
-            </a>
+              Retour à l&apos;accueil
+            </Link>
             <Link 
               href="/contact"
               className="inline-block px-10 py-4 border border-white text-white hover:bg-white hover:text-neutral-900 transition-colors font-light text-sm tracking-wide uppercase"
