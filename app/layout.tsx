@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Phonix - Réparation de Téléphones à Bruxelles & Geraardsbergen | iPhone, Samsung, Xiaomi, Huawei",
-  description: "Réparation professionnelle de téléphones à Bruxelles et Geraardsbergen. Écran OLED, batterie, caméra, vitre arrière. iPhone, Samsung, Xiaomi, Huawei. Réparation rapide, garantie 12 mois. Déplacement possible.",
+  description: "Réparation professionnelle de téléphones à Bruxelles et Geraardsbergen. Écran, batterie, caméra, vitre arrière. iPhone, Samsung, Xiaomi, Huawei. Réparation rapide, garantie 12 mois. Déplacement possible.",
   keywords: "réparation téléphone Bruxelles, réparation iPhone Bruxelles, réparation Samsung Bruxelles, réparation écran téléphone, batterie téléphone, Phonix, Geraardsbergen, réparation mobile Belgique",
   authors: [{ name: "Phonix" }],
   openGraph: {

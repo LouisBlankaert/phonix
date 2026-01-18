@@ -26,7 +26,7 @@ export default function Home() {
             Réparation de Téléphones
           </h1>
           <p className="text-base md:text-lg font-light text-neutral-600 max-w-3xl mx-auto mb-8">
-            Réparation rapide d&apos;écrans OLED, batteries, caméras et vitres arrière pour iPhone, Samsung, Xiaomi et Huawei. Garantie 12 mois.
+            Réparation rapide d&apos;écrans, batteries, caméras et vitres arrière pour iPhone, Samsung, Xiaomi et Huawei. Garantie 12 mois.
           </p>
 
           {!selectedBrand && (
@@ -100,31 +100,33 @@ export default function Home() {
             </div>
           )}
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto mb-16">
-            <div className="bg-white border border-neutral-200 p-6 md:p-8 hover:border-neutral-900 transition-all duration-300 hover:shadow-md">
-              <MapPin className="h-8 w-8 text-neutral-900 mx-auto mb-4" />
-              <div className="font-light text-neutral-900 mb-2 text-lg">{serviceFeatures[0].title}</div>
-              <div className="text-sm text-neutral-600 space-y-1">
-                {serviceFeatures[0].locations?.map((location, index) => (
-                  <div key={index}>{location}</div>
-                ))}
+          {!selectedBrand && (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto mb-16">
+              <div className="bg-white border border-neutral-200 p-6 md:p-8 hover:border-neutral-900 transition-all duration-300 hover:shadow-md">
+                <MapPin className="h-8 w-8 text-neutral-900 mx-auto mb-4" />
+                <div className="font-light text-neutral-900 mb-2 text-lg">{serviceFeatures[0].title}</div>
+                <div className="text-sm text-neutral-600 space-y-1">
+                  {serviceFeatures[0].locations?.map((location, index) => (
+                    <div key={index}>{location}</div>
+                  ))}
+                </div>
+              </div>
+              <div className="bg-white border border-neutral-200 p-6 md:p-8 hover:border-neutral-900 transition-all duration-300 hover:shadow-md">
+                <Truck className="h-8 w-8 text-neutral-900 mx-auto mb-4" />
+                <div className="font-light text-neutral-900 mb-2 text-lg">{serviceFeatures[1].title}</div>
+                <div className="text-sm text-neutral-600">
+                  {serviceFeatures[1].description}
+                </div>
+              </div>
+              <div className="bg-white border border-neutral-200 p-6 md:p-8 hover:border-neutral-900 transition-all duration-300 hover:shadow-md">
+                <ShieldCheck className="h-8 w-8 text-neutral-900 mx-auto mb-4" />
+                <div className="font-light text-neutral-900 mb-2 text-lg">{serviceFeatures[2].title}</div>
+                <div className="text-sm text-neutral-600">
+                  {serviceFeatures[2].description}
+                </div>
               </div>
             </div>
-            <div className="bg-white border border-neutral-200 p-6 md:p-8 hover:border-neutral-900 transition-all duration-300 hover:shadow-md">
-              <Truck className="h-8 w-8 text-neutral-900 mx-auto mb-4" />
-              <div className="font-light text-neutral-900 mb-2 text-lg">{serviceFeatures[1].title}</div>
-              <div className="text-sm text-neutral-600">
-                {serviceFeatures[1].description}
-              </div>
-            </div>
-            <div className="bg-white border border-neutral-200 p-6 md:p-8 hover:border-neutral-900 transition-all duration-300 hover:shadow-md">
-              <ShieldCheck className="h-8 w-8 text-neutral-900 mx-auto mb-4" />
-              <div className="font-light text-neutral-900 mb-2 text-lg">{serviceFeatures[2].title}</div>
-              <div className="text-sm text-neutral-600">
-                {serviceFeatures[2].description}
-              </div>
-            </div>
-          </div>
+          )}
         </div>
 
         {selectedBrand && (
@@ -146,7 +148,7 @@ export default function Home() {
                   <th className="px-3 md:px-6 py-4 md:py-5 text-center font-light text-xs md:text-sm tracking-wide uppercase">
                     <div className="flex items-center justify-center gap-1 md:gap-2">
                       <Smartphone className="h-3 w-3 md:h-4 md:w-4" />
-                      <span className="hidden sm:inline">Écran OLED</span>
+                      <span className="hidden sm:inline">Écran</span>
                       <span className="sm:hidden">Écran</span>
                     </div>
                   </th>

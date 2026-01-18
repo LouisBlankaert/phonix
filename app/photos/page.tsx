@@ -12,7 +12,7 @@ export default function Photos() {
         { 
           model: "iPhone 16 Pro Max",
           before: "Écran cassé",
-          after: "Écran OLED neuf"
+          after: "Écran neuf"
         },
         { 
           model: "iPhone 15 Pro",

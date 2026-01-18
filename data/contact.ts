@@ -15,7 +15,7 @@ export const contactInfo = {
 
 export const serviceHighlights = [
   // "Garantie 12 mois sur toutes les réparations",
-  "Pièces OLED de qualité",
+  "Pièces de qualité",
   "Devis gratuit"
 ];
 
